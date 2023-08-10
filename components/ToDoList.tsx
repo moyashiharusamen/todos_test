@@ -3,9 +3,6 @@ import { useAddTodo } from "../Hooks/useAddTodo";
 
 export const TodoList: React.FC = () => {
   const { todos } = useAddTodo();
-  todos.map((todo) => {
-    console.log(todo);
-  });
 
   return (
     <>

@@ -9,8 +9,13 @@ export const useAddTodo = () => {
   }, []);
 
   const fetchTodos = async () => {
-    const datas: any = await supabase.from("todos").select("*");
-    setTodos(datas.data);
+    try {
+      const { data, error }: any = await supabase.from("todos").select("*");
+      if (error) throw new Error(error.message);
+      setTodos(data);
+    } catch (error: any) {
+      console.error(error.message);
+    }
   };
 
   return { todos, fetchTodos };
